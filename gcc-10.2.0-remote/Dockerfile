@@ -8,7 +8,7 @@ RUN cd /usr/local/src \
  && apt-get update > /dev/null 2>&1 \
  && apt-get install -y --no-install-recommends libmpfr-dev libmpc-dev > /dev/null 2>&1 \
  && rm -r /var/lib/apt/lists/* \
- && ../configure --target=sh-elf --enable-languages=c --disable-libssp> /dev/null 2>&1 \
+ && ../configure CFLAGS_FOR_TARGET="-gdwarf-2 -gstrict-dwarf -O2" --target=sh-elf --enable-languages=c --disable-libssp --with-newlib > /dev/null 2>&1 \
  && make -s -j8 > /dev/null 2>&1 \
  && make -s install > /dev/null 2>&1 \
  && rm -rf /usr/local/src/gcc-10.2.0

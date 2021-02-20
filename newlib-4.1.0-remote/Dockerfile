@@ -5,7 +5,7 @@ RUN cd /usr/local/src \
  && rm /usr/local/src/newlib-4.1.0.tar.gz \
  && mkdir /usr/local/src/newlib-4.1.0/build \
  && cd /usr/local/src/newlib-4.1.0/build \
- && ../configure --target=sh-elf > /dev/null 2>&1 \
+ && ../configure CFLAGS_FOR_TARGET="-gdwarf-2 -gstrict-dwarf -O2" --target=sh-elf > /dev/null 2>&1 \
  && make -s -j8 > /dev/null 2>&1 \
  && make -s install > /dev/null 2>&1 \
  && rm -rf /usr/local/src/newlib-4.1.0
